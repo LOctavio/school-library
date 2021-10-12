@@ -16,12 +16,13 @@ class Person
     of_age? || @parent_permission
   end
 
+  def validate_name
+    @corrector.correct_name(@name)
+  end
+
   private
 
   def of_age?
     @age >= 18
   end
 end
-
-a = Person.new(19, 'luis', parent_permission: false)
-p a
