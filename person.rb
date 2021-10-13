@@ -2,7 +2,7 @@ require_relative './corrector'
 
 class Person
   attr_reader :id
-  attr_accessor :age, :name
+  attr_accessor :age, :name, :rental
 
   def initialize(age, name = 'Unknown', parent_permission: true)
     @id = Random.rand(1..1000)
@@ -10,6 +10,7 @@ class Person
     @age = age
     @parent_permission = parent_permission
     @corrector = Corrector.new
+    @rental = []
   end
 
   def can_use_services?
@@ -18,6 +19,11 @@ class Person
 
   def validate_name
     @corrector.correct_name(@name)
+  end
+
+  def add_rental(rental)
+    @rental.push(rental)
+    rental.person = self
   end
 
   private
