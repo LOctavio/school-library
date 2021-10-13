@@ -21,6 +21,11 @@ class Person
     @corrector.correct_name(@name)
   end
 
+  def add_rental(rental)
+    @rental.push(rental)
+    rental.person = self
+  end
+
   private
 
   def of_age?
