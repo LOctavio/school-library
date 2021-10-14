@@ -1,5 +1,6 @@
 require_relative './student'
 require_relative './teacher'
+require_relative './book'
 
 class Main
   def initialize
@@ -31,5 +32,14 @@ class Main
       @persons.push(Teacher.new(age, name, specialization))
     end
     puts 'Person created successfully'
+  end
+
+  def create_book
+    puts 'Title:'
+    title = gets.chomp
+    puts 'Author:'
+    author = gets.chomp
+    @books.push(Book.new(title, author))
+    puts 'Book created successfully'
   end
 end
