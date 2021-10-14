@@ -64,7 +64,10 @@ class Main
   def show_rentals
     puts 'ID of person:'
     id = gets.chomp.to_i
-    person = @people.select { |person| person.id === id }
-    person[0].rental.each { |rental| puts "Date: #{rental.date}, Book #{rental.book.title} by #{rental.book.author}" }
+    person_selected = @people.select { |person| person.id == id }
+    person_selected[0].rental.each do |rental|
+      puts "Date: #{rental.date}, Book #{rental.book.title} by #{rental.book.author}"
+    end
   end
+
 end
