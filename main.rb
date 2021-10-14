@@ -60,4 +60,11 @@ class Main
     @people[person].add_rental(rental)
     puts 'Rental created successfully'
   end
+
+  def show_rentals
+    puts 'ID of person:'
+    id = gets.chomp.to_i
+    person = @people.select { |person| person.id === id }
+    person[0].rental.each { |rental| puts "Date: #{rental.date}, Book #{rental.book.title} by #{rental.book.author}" }
+  end
 end
