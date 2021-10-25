@@ -6,7 +6,6 @@ require_relative 'classes/options'
 require_relative 'classes/book_list'
 require_relative 'classes/people_list'
 
-
 class Main
   def initialize
     @options = Options.new
