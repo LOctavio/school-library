@@ -3,33 +3,12 @@ require_relative 'classes/teacher'
 require_relative 'classes/book'
 require_relative 'classes/rental'
 require_relative 'classes/bookList'
+require_relative 'classes/peopleList'
 
 class Main
   def initialize
     @bookList = BookList.new
-    @people = []
-  end
-
-  def show_people
-    @people.each { |person| puts "[#{person.class.name}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}" }
-  end
-
-  def create_person(person)
-    puts 'Age:'
-    age = gets.chomp.to_i
-    puts 'Name:'
-    name = gets.chomp
-    case person
-    when 1
-      puts 'Has parent permission? [Y/N]:'
-      parent_permission = gets.chomp
-      @people.push(Student.new(age, name, parent_permission))
-    when 2
-      puts 'Specialization:'
-      specialization = gets.chomp
-      @people.push(Teacher.new(age, name, specialization))
-    end
-    puts 'Person created successfully'
+    @peopleList = PeopleList.new
   end
 
   def create_rental
@@ -37,7 +16,7 @@ class Main
     @bookList.books.each_with_index { |book, index| puts "#{index}) Title: \"#{book.title}\", Author: #{book.author}" }
     book = gets.chomp.to_i
     puts 'Select a person from the following list by number'
-    @people.each_with_index do |person, index|
+    @peopleList.people.each_with_index do |person, index|
       puts "#{index}) [#{person.class.name}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
     person = gets.chomp.to_i
@@ -45,14 +24,14 @@ class Main
     date = gets.chomp
     rental = Rental.new(date)
     rental.book = @bookList.books[book]
-    @people[person].add_rental(rental)
+    @peopleList.people[person].add_rental(rental)
     puts 'Rental created successfully'
   end
 
   def show_rentals
     puts 'ID of person:'
     id = gets.chomp.to_i
-    person_selected = @people.select { |person| person.id == id }
+    person_selected = @peopleList.people.select { |person| person.id == id }
     person_selected[0].rental.each do |rental|
       puts "Date: #{rental.date}, Book #{rental.book.title} by #{rental.book.author}"
     end
@@ -76,7 +55,7 @@ class Main
     when 1
       @bookList.show
     when 2
-      show_people
+      @peopleList.show
     when 6
       show_rentals
     end
@@ -87,7 +66,7 @@ class Main
     when 3
       puts 'Do you want to create a student (1) or a teacher (2) [Input the number]: '
       option = gets.chomp.to_i
-      create_person(option)
+      @peopleList.add(option)
     when 4
       @bookList.add
     when 5
