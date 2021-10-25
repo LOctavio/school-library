@@ -1,16 +1,13 @@
-require_relative './student'
-require_relative './teacher'
-require_relative './book'
-require_relative './rental'
+require_relative 'classes/student'
+require_relative 'classes/teacher'
+require_relative 'classes/book'
+require_relative 'classes/rental'
+require_relative 'classes/bookList'
 
 class Main
   def initialize
-    @books = []
+    @bookList = BookList.new
     @people = []
-  end
-
-  def show_books
-    @books.each { |book| puts "Title: \"#{book.title}\", Author: #{book.author}" }
   end
 
   def show_people
@@ -35,18 +32,9 @@ class Main
     puts 'Person created successfully'
   end
 
-  def create_book
-    puts 'Title:'
-    title = gets.chomp
-    puts 'Author:'
-    author = gets.chomp
-    @books.push(Book.new(title, author))
-    puts 'Book created successfully'
-  end
-
   def create_rental
     puts 'Select a book from the following list by number'
-    @books.each_with_index { |book, index| puts "#{index}) Title: \"#{book.title}\", Author: #{book.author}" }
+    @bookList.books.each_with_index { |book, index| puts "#{index}) Title: \"#{book.title}\", Author: #{book.author}" }
     book = gets.chomp.to_i
     puts 'Select a person from the following list by number'
     @people.each_with_index do |person, index|
@@ -56,7 +44,7 @@ class Main
     puts 'Date:'
     date = gets.chomp
     rental = Rental.new(date)
-    rental.book = @books[book]
+    rental.book = @bookList.books[book]
     @people[person].add_rental(rental)
     puts 'Rental created successfully'
   end
@@ -86,7 +74,7 @@ class Main
   def show_options(option)
     case option
     when 1
-      show_books
+      @bookList.show
     when 2
       show_people
     when 6
@@ -101,7 +89,7 @@ class Main
       option = gets.chomp.to_i
       create_person(option)
     when 4
-      create_book
+      @bookList.add
     when 5
       create_rental
     end
