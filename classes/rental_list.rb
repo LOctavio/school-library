@@ -1,5 +1,5 @@
-require_relative './bookList'
-require_relative './peopleList'
+require_relative './book_list'
+require_relative './people_list'
 
 class RentalList
   def initialize(books, people)

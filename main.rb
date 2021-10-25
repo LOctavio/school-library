@@ -2,14 +2,14 @@ require_relative 'classes/student'
 require_relative 'classes/teacher'
 require_relative 'classes/book'
 require_relative 'classes/rental'
-require_relative 'classes/bookList'
-require_relative 'classes/peopleList'
-require_relative 'classes/rentalList'
+require_relative 'classes/book_list'
+require_relative 'classes/people_list'
+require_relative 'classes/rental_list'
 
 class Main
   def initialize
-    @bookList = BookList.new
-    @peopleList = PeopleList.new
+    @book_list = BookList.new
+    @people_list = PeopleList.new
   end
 
   def app_info
@@ -28,12 +28,12 @@ class Main
   def show_options(option)
     case option
     when 1
-      @bookList.show
+      @book_list.show
     when 2
-      @peopleList.show
+      @people_list.show
     when 6
-      rentalList = RentalList.new(@bookList.books, @peopleList.people)
-      rentalList.show
+      rental_list = RentalList.new(@book_list.books, @people_list.people)
+      rental_list.show
     end
   end
 
@@ -42,12 +42,12 @@ class Main
     when 3
       puts 'Do you want to create a student (1) or a teacher (2) [Input the number]: '
       option = gets.chomp.to_i
-      @peopleList.add(option)
+      @people_list.add(option)
     when 4
-      @bookList.add
+      @book_list.add
     when 5
-      rentalList = RentalList.new(@bookList.books, @peopleList.people)
-      rentalList.add
+      rental_list = RentalList.new(@book_list.books, @people_list.people)
+      rental_list.add
     end
   end
 
