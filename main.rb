@@ -4,37 +4,12 @@ require_relative 'classes/book'
 require_relative 'classes/rental'
 require_relative 'classes/bookList'
 require_relative 'classes/peopleList'
+require_relative 'classes/rentalList'
 
 class Main
   def initialize
     @bookList = BookList.new
     @peopleList = PeopleList.new
-  end
-
-  def create_rental
-    puts 'Select a book from the following list by number'
-    @bookList.books.each_with_index { |book, index| puts "#{index}) Title: \"#{book.title}\", Author: #{book.author}" }
-    book = gets.chomp.to_i
-    puts 'Select a person from the following list by number'
-    @peopleList.people.each_with_index do |person, index|
-      puts "#{index}) [#{person.class.name}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
-    end
-    person = gets.chomp.to_i
-    puts 'Date:'
-    date = gets.chomp
-    rental = Rental.new(date)
-    rental.book = @bookList.books[book]
-    @peopleList.people[person].add_rental(rental)
-    puts 'Rental created successfully'
-  end
-
-  def show_rentals
-    puts 'ID of person:'
-    id = gets.chomp.to_i
-    person_selected = @peopleList.people.select { |person| person.id == id }
-    person_selected[0].rental.each do |rental|
-      puts "Date: #{rental.date}, Book #{rental.book.title} by #{rental.book.author}"
-    end
   end
 
   def app_info
@@ -57,7 +32,8 @@ class Main
     when 2
       @peopleList.show
     when 6
-      show_rentals
+      rentalList = RentalList.new(@bookList.books, @peopleList.people)
+      rentalList.show
     end
   end
 
@@ -70,7 +46,8 @@ class Main
     when 4
       @bookList.add
     when 5
-      create_rental
+      rentalList = RentalList.new(@bookList.books, @peopleList.people)
+      rentalList.add
     end
   end
 
