@@ -10,11 +10,18 @@ class Rental
 
   def book=(book)
     @book = book
-    book.rental.push(self) unless book.rental.include?(self)
   end
 
   def person=(person)
     @person = person
-    person.rental.push(self) unless person.rental.include?(self)
+  end
+
+  def to_json(_options = {})
+    {
+      'className' => self.class.name,
+      'date' => @date,
+      'book' => @book,
+      'person' => @person
+    }
   end
 end
