@@ -11,4 +11,12 @@ class Book
     @rental.push(rental)
     rental.book = self
   end
+
+  def to_json(_options = {})
+    {
+      'className' => self.class.name,
+      'title' => @title,
+      'author' => @author
+    }
+  end
 end

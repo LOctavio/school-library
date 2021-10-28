@@ -1,6 +1,5 @@
 class Rental
-  attr_accessor :date
-  attr_reader :book, :person
+  attr_accessor :date, :book, :person
 
   def initialize(date)
     @date = date
@@ -8,13 +7,12 @@ class Rental
     @person = 'Uknown'
   end
 
-  def book=(book)
-    @book = book
-    book.rental.push(self) unless book.rental.include?(self)
-  end
-
-  def person=(person)
-    @person = person
-    person.rental.push(self) unless person.rental.include?(self)
+  def to_json(_options = {})
+    {
+      'className' => self.class.name,
+      'date' => @date,
+      'book' => @book,
+      'person' => @person
+    }
   end
 end
