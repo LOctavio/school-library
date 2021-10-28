@@ -14,6 +14,23 @@ This app allows you to do the following:
 
 - Ruby
 
+## Getting Started
+
+To get a local copy up and running follow these simple example steps.
+
+### Prerequisites
+
+- Ruby 3.0.1
+
+### Install
+
+- Open your directory and run 'git clone https://github.com/LOctavio/school-library.git' to clone the project
+
+### Usage
+
+- Open the project directory on the terminal
+- Run 'ruby main.rb'
+
 ## Authors
 
 👤 **Luis Octavio Ramirez Cruz**
