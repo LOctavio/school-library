@@ -6,7 +6,7 @@ class RentalList
     @books = books
     @people = people
     file = File.open('data/rentals.json', 'a+')
-    @rentals = file.size == 0 ? [] : JSON.parse(file.read)
+    @rentals = file.size.zero? ? [] : JSON.parse(file.read)
     file.close
   end
 

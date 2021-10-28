@@ -11,12 +11,12 @@ class Teacher < Person
   end
 
   def to_json(_options = {})
-  {
-    'className' => self.class.name,
-    'id' => @id,
-    'age' => @age,
-    'name' => @name,
-    'specialization' => @specialization
-  }
-end
+    {
+      'className' => self.class.name,
+      'id' => @id,
+      'age' => @age,
+      'name' => @name,
+      'specialization' => @specialization
+    }
+  end
 end

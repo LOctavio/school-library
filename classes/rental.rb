@@ -1,19 +1,10 @@
 class Rental
-  attr_accessor :date
-  attr_reader :book, :person
+  attr_accessor :date, :book, :person
 
   def initialize(date)
     @date = date
     @book = 'Uknown'
     @person = 'Uknown'
-  end
-
-  def book=(book)
-    @book = book
-  end
-
-  def person=(person)
-    @person = person
   end
 
   def to_json(_options = {})

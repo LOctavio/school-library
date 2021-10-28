@@ -5,7 +5,7 @@ class BookList
 
   def initialize
     file = File.open('data/books.json', 'a+')
-    @books = file.size == 0 ? [] : JSON.parse(file.read)
+    @books = file.size.zero? ? [] : JSON.parse(file.read)
     file.close
   end
 
