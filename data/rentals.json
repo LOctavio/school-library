@@ -1,1 +1,0 @@
-[{"className":"Rental","date":"12/12/12","book":{"className":"Book","title":"Harry Potter","author":"J.K. Rowling"},"person":{"className":"Student","id":513,"age":12,"name":"Luis","parent_permission":"n","classroom":"Unknown"}}]

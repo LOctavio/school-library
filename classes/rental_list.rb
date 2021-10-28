@@ -5,13 +5,13 @@ class RentalList
   def initialize(books, people)
     @books = books
     @people = people
-    file = File.open('data/rentals.json', 'a+')
+    file = File.open('rentals.json', 'a+')
     @rentals = file.size.zero? ? [] : JSON.parse(file.read)
     file.close
   end
 
   def add
-    file = File.open('data/rentals.json', 'w')
+    file = File.open('rentals.json', 'w')
     puts 'Select a book from the following list by number'
     @books.each_with_index { |book, index| puts "#{index}) Title: \"#{book['title']}\", Author: #{book['author']}" }
     book = gets.chomp.to_i
@@ -33,7 +33,7 @@ class RentalList
   end
 
   def show
-    file = File.open('data/rentals.json', 'r')
+    file = File.open('rentals.json', 'r')
     puts 'ID of person:'
     id = gets.chomp.to_i
     rentals = @rentals.select { |rental| rental['person']['id'] == id }
