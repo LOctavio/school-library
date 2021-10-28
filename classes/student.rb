@@ -20,6 +20,7 @@ class Student < Person
   def to_json(_options = {})
     {
       'className' => self.class.name,
+      'id' => @id,
       'age' => @age,
       'name' => @name,
       'parent_permission' => @parent_permission,
