@@ -14,6 +14,11 @@ This app allows you to do the following:
 
 - Ruby
 
+### Run tests
+
+- Use the terminal to open the project
+- run rspec to check tests
+
 ## Authors
 
 👤 **Luis Octavio Ramirez Cruz**
