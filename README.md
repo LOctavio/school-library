@@ -31,6 +31,11 @@ To get a local copy up and running follow these simple example steps.
 - Open the project directory on the terminal
 - Run 'ruby main.rb'
 
+### Run tests
+
+- Use the terminal to open the project
+- run rspec to check tests
+
 ## Authors
 
 👤 **Luis Octavio Ramirez Cruz**
