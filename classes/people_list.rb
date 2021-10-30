@@ -2,13 +2,13 @@ class PeopleList
   attr_accessor :people
 
   def initialize
-    file = File.open('data/people.json', 'a+')
+    file = File.open('people.json', 'a+')
     @people = file.size.zero? ? [] : JSON.parse(file.read)
     file.close
   end
 
   def show
-    file = File.open('data/people.json', 'r')
+    file = File.open('people.json', 'r')
     @people.each do |person|
       puts "[#{person['className']}] Name: #{person['name']}, ID: #{person['id']}, Age: #{person['age']}"
     end
@@ -16,7 +16,7 @@ class PeopleList
   end
 
   def add(person)
-    file = File.open('data/people.json', 'w')
+    file = File.open('people.json', 'w')
     puts 'Age:'
     age = gets.chomp.to_i
     puts 'Name:'

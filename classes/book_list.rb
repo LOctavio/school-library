@@ -4,19 +4,19 @@ class BookList
   attr_accessor :books
 
   def initialize
-    file = File.open('data/books.json', 'a+')
+    file = File.open('books.json', 'a+')
     @books = file.size.zero? ? [] : JSON.parse(file.read)
     file.close
   end
 
   def show
-    file = File.open('data/books.json', 'r')
+    file = File.open('books.json', 'r')
     @books.each { |book| puts "Title: \"#{book['title']}\", Author: #{book['author']}" }
     file.close
   end
 
   def add
-    file = File.open('data/books.json', 'w')
+    file = File.open('books.json', 'w')
     puts 'Title:'
     title = gets.chomp
     puts 'Author:'

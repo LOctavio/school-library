@@ -6,6 +6,7 @@ class Options
   def initialize
     @book_list = BookList.new
     @people_list = PeopleList.new
+    @rental_list = RentalList.new(@book_list.books, @people_list.people)
   end
 
   def show_list
@@ -26,8 +27,7 @@ class Options
     when 2
       @people_list.show
     when 6
-      rental_list = RentalList.new(@book_list.books, @people_list.people)
-      rental_list.show
+      @rental_list.show
     end
   end
 
@@ -40,8 +40,7 @@ class Options
     when 4
       @book_list.add
     when 5
-      rental_list = RentalList.new(@book_list.books, @people_list.people)
-      rental_list.add
+      @rental_list.add
     end
   end
 
