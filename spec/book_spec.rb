@@ -6,7 +6,7 @@ describe Book do
       title = 'Harry Potter'
       author = 'J.K. Rowling'
       @book = Book.new(title, author)
-    end 
+    end
 
     it 'is an instance of Person' do
       expect(@book).to be_an_instance_of(Book)

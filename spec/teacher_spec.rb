@@ -8,7 +8,6 @@ describe Teacher do
       specialization = false
       @teacher = Teacher.new(age, name, specialization)
     end
-    
 
     it 'It is an instance of Student' do
       expect(@teacher).to be_an_instance_of(Teacher)

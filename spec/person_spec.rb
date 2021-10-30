@@ -8,7 +8,6 @@ describe Person do
       name = 'luis'
       @person = Person.new(age, name, parent_permission: false)
     end
-    
 
     it 'It is an instance of Person' do
       expect(@person).to be_an_instance_of(Person)

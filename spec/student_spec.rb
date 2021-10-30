@@ -8,7 +8,6 @@ describe Student do
       parent_permission = false
       @student = Student.new(age, name, parent_permission)
     end
-    
 
     it 'It is an instance of Student' do
       expect(@student).to be_an_instance_of(Student)

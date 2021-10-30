@@ -4,7 +4,7 @@ describe Corrector do
   context 'Testing the corrector class' do
     before(:context) do
       @corrector = Corrector.new
-    end 
+    end
 
     it 'is an instance of Corrector' do
       expect(@corrector).to be_an_instance_of(Corrector)

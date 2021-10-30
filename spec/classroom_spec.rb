@@ -6,7 +6,6 @@ describe Classroom do
       label = 'B'
       @classroom = Classroom.new(label)
     end
-    
 
     it 'It is an instance of Classroom' do
       expect(@classroom).to be_an_instance_of(Classroom)

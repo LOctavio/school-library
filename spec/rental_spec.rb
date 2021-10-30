@@ -8,7 +8,7 @@ describe Rental do
     before(:context) do
       date = '12/12/12'
       @rental = Rental.new(date)
-    end 
+    end
 
     it 'is an instance of Rental' do
       expect(@rental).to be_an_instance_of(Rental)
